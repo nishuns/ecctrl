@@ -485,8 +485,14 @@ const useJoystickControls = /* @__PURE__ */ zustand.create(
 );
 function EcctrlAnimation(props) {
   const group = react.useRef();
-  const { animations } = drei.useGLTF(props.characterURL);
-  const { actions } = drei.useAnimations(animations, group);
+  let characterAnimation;
+  if (props.isCustomAnimation) {
+    characterAnimation = props.customAnimationSet;
+  } else {
+    const { animations } = drei.useGLTF(props.characterURL);
+    characterAnimation = animations;
+  }
+  const { actions } = drei.useAnimations(characterAnimation, group);
   const curAnimation = useGame((state) => state.curAnimation);
   const resetAnimation = useGame((state) => state.reset);
   const initializeAnimationSet = useGame(

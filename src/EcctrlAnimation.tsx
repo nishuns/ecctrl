@@ -6,8 +6,14 @@ import { useGame, type AnimationSet } from "./stores/useGame";
 export function EcctrlAnimation(props: EcctrlAnimationProps) {
   // Change the character src to yours
   const group = useRef();
-  const { animations } = useGLTF(props.characterURL);
-  const { actions } = useAnimations(animations, group);
+  let characterAnimation:any;
+  if (props.isCustomAnimation) {
+    characterAnimation = props.customAnimationSet;
+  } else {
+    const { animations } = useGLTF(props.characterURL);
+    characterAnimation = animations;
+  }
+  const { actions } = useAnimations(characterAnimation, group);
 
   /**
    * Character animations setup
@@ -74,6 +80,8 @@ export function EcctrlAnimation(props: EcctrlAnimationProps) {
 
 export type EcctrlAnimationProps = {
   characterURL: string;
+  isCustomAnimation: Boolean,
+  customAnimationSet:any
   animationSet: AnimationSet;
   children: React.ReactNode;
 };
