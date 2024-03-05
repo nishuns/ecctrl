@@ -1073,6 +1073,14 @@ const Ecctrl = forwardRef<RapierRigidBody, EcctrlProps>(({
         characterModelRef.current.quaternion.copy(characterModelIndicator.quaternion)
       }
     }
+    
+    /**
+     * Camera Rotation
+     */
+    pivot.quaternion.rotateTowards(
+      modelQuat,
+      delta * turnSpeed
+    )
 
     /**
      *  Camera movement
