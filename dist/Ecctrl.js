@@ -1604,6 +1604,10 @@ const Ecctrl = forwardRef(({
         characterModelRef.current.quaternion.copy(characterModelIndicator.quaternion);
       }
     }
+    pivot.quaternion.rotateTowards(
+      modelQuat,
+      delta * turnSpeed
+    );
     pivotPosition.set(
       currentPos.x + camTargetPos.x,
       currentPos.y + (camTargetPos.y || capsuleHalfHeight + capsuleRadius / 2),
