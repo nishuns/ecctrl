@@ -1602,7 +1602,6 @@ const Ecctrl = forwardRef(({
         characterModelRef.current.quaternion.copy(pivot.quaternion);
       } else {
         characterModelRef.current.quaternion.copy(characterModelIndicator.quaternion);
-        pivot.quaternion.copy(characterModelIndicator.quaternion);
       }
     }
     pivotPosition.set(
