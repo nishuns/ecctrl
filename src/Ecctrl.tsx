@@ -1081,7 +1081,7 @@ const Ecctrl = forwardRef<RapierRigidBody, EcctrlProps>(({
     //   modelQuat,
     //   delta * turnSpeed
     // )
-    pivot.rotation.x = delta * turnSpeed;
+    pivot.rotation.y = delta * turnSpeed;
 
     /**
      *  Camera movement
