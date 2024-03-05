@@ -798,7 +798,7 @@ const Ecctrl = forwardRef<RapierRigidBody, EcctrlProps>(({
       pointToPoint.set(moveToPoint.x - currentPos.x, 0, moveToPoint.z - currentPos.z)
       crossVector.crossVectors(pointToPoint, vectorZ)
       // Rotate character to moving direction
-      modelEuler.y = (crossVector.y > 0 ? -1 : 1) * pointToPoint.angleTo(vectorZ);
+      modelEuler.y = (crossVector.y > 0 ? -1 : 1) * pointToPoint.angleTo(vectorZ);  
       // Once character close to the target point (distance<0.3),
       // Or character close to the wall (bodySensor intersects) 
       // stop moving
@@ -1071,6 +1071,7 @@ const Ecctrl = forwardRef<RapierRigidBody, EcctrlProps>(({
         characterModelRef.current.quaternion.copy(pivot.quaternion)
       } else {
         characterModelRef.current.quaternion.copy(characterModelIndicator.quaternion)
+        pivot.quaternion.copy(characterModelIndicator.quaternion);
       }
     }
     
@@ -1081,7 +1082,6 @@ const Ecctrl = forwardRef<RapierRigidBody, EcctrlProps>(({
     //   modelQuat,
     //   delta * turnSpeed
     // )
-    pivot.rotation.y = delta * turnSpeed;
 
     /**
      *  Camera movement

@@ -1621,9 +1621,9 @@ const Ecctrl = react.forwardRef(({
         characterModelRef.current.quaternion.copy(pivot.quaternion);
       } else {
         characterModelRef.current.quaternion.copy(characterModelIndicator.quaternion);
+        pivot.quaternion.copy(characterModelIndicator.quaternion);
       }
     }
-    pivot.rotation.y = delta * turnSpeed;
     pivotPosition.set(
       currentPos.x + camTargetPos.x,
       currentPos.y + (camTargetPos.y || capsuleHalfHeight + capsuleRadius / 2),
